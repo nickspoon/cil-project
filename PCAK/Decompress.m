@@ -1,0 +1,14 @@
+function I_rec = Decompress(I_comp)
+    data = I_comp.km.means(I_comp.km.data, :);
+    d = 8; % patch size
+    Xzm = I_comp.pca.eigen * data';
+    X = Xzm' + repmat(I_comp.pca.mean, size(Xzm, 2), 1);
+    br_vec = ones(1, size(X, 1));
+    bc_vec = size(X, 2);
+    C = mat2cell(X, br_vec, bc_vec);
+    Cr = cellfun(@(c) reshape(c, d, d, I_comp.colours), C, 'UniformOutput', false);
+    Cr = reshape(Cr, [I_comp.pca.blocks(1), I_comp.pca.blocks(2)]);
+    I_rec = cell2mat(Cr);
+    sz = size(I_rec);
+    padding = I_comp.size - sz(1:2);
+    I_rec = padarray(I_rec, padding, 0, 'post');
