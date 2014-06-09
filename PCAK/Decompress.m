@@ -1,6 +1,6 @@
 function I_rec = Decompress(I_comp)
     data = I_comp.km.means(I_comp.km.data, :);
-    d = 8; % patch size
+    d = 4; % patch size
     Xzm = I_comp.pca.eigen * data';
     X = Xzm' + repmat(I_comp.pca.mean, size(Xzm, 2), 1);
     br_vec = ones(1, size(X, 1));

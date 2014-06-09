@@ -1,6 +1,6 @@
 function I_comp = Compress(I)
-    d = 8; % patch size
-    k = 7; % dimensions to retain
+    d = 4; % patch size
+    k = 3; % dimensions to retain
     [X, blocks] = extract(I, d);
     [mu, lambda, U] = PCAanalyse(X);
     Xzm = X - repmat(mu, size(X, 1), 1);
