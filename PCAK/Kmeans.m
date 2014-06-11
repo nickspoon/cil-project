@@ -1,10 +1,11 @@
-function [mu, Z] = Kmeans(D)
-    n = 200; % number of data points to sample
-    k = 32; % number of colours
-    thresh = 0.1; % centroid-change threshold
+function [mu, Z, msd] = Kmeans(D, k)
+    n = size(D, 1); % number of data points to sample
+    thresh = 0.05; % centroid-change threshold
+    it = 20; % iterate max. 10 times
     dim = size(D, 2); % dimension of data
     % sample data points from D
-    A = reshape(D(randsample(size(D,1), n),:), n, 1, dim);
+    %A = reshape(D(randsample(size(D,1), n),:), n, 1, dim);
+    A = reshape(D, n, 1, dim);
     % sample means
     mu = A(randsample(size(A,1), k),:);
     B = repmat(A, [1, k, 1]);
@@ -32,10 +33,13 @@ function [mu, Z] = Kmeans(D)
         if all (diff < thresh)
             break;
         end
+        it = it - 1;
+        if (it <= 0) break; end
         mu = newmu;
     end
     B = repmat(reshape(D, [], 1, dim), [1, k, 1]);
     muRep = repmat(reshape(mu, 1, k, dim), [size(B,1), 1, 1]);
     C = B - muRep;
     C = sum(C.^2, 3);
-    [~,Z] = min(C, [], 2);    
+    [D,Z] = min(C, [], 2);
+    msd = mean(sum(D.^2,2));

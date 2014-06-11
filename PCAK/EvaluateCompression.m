@@ -2,13 +2,16 @@
 %
 % NOTE Images must be have .jpg ending and reside in the same folder.
 
-file_list = dir(); 
+%IMAGE_DIR = '../swissmountains/';
+IMAGE_DIR = './';
+
+file_list = dir(IMAGE_DIR); 
 k = 1;
 
 Errors = []; % mean squared errors for each image would be stored here
 Comp_rates = []; % compression rate for each image would be stored here
 
-for i = 3:length(dir) % runing through the folder
+for i = 3:length(file_list) % runing through the folder
     
     file_name = file_list(i).name; % get current filename
     
@@ -17,7 +20,7 @@ for i = 3:length(dir) % runing through the folder
     end
     
     % Read image, convert to double precision and map to [0,1] interval
-    I = imread(file_name); 
+    I = imread([IMAGE_DIR file_name]); 
     I = double(I) / 255; 
     
     size_orig = whos('I'); % size of original image
