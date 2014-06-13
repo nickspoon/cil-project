@@ -1,11 +1,12 @@
 function [mu, Z, msd] = Kmeans(D, k)
-    n = size(D, 1); % number of data points to sample
+    n = floor(size(D, 1)/10); % number of data points to sample
+    %n = size(D, 1);
     thresh = 0.05; % centroid-change threshold
-    it = 20; % iterate max. 10 times
+    it = 20; % iterate max. 20 times
     dim = size(D, 2); % dimension of data
     % sample data points from D
-    %A = reshape(D(randsample(size(D,1), n),:), n, 1, dim);
-    A = reshape(D, n, 1, dim);
+    A = reshape(D(randsample(size(D,1), n),:), n, 1, dim);
+    %A = reshape(D, n, 1, dim);
     % sample means
     mu = A(randsample(size(A,1), k),:);
     B = repmat(A, [1, k, 1]);
@@ -34,7 +35,10 @@ function [mu, Z, msd] = Kmeans(D, k)
             break;
         end
         it = it - 1;
-        if (it <= 0) break; end
+        if (it <= 0)
+        	%disp('Did not converge');
+        	break;
+        end
         mu = newmu;
     end
     B = repmat(reshape(D, [], 1, dim), [1, k, 1]);

@@ -1,5 +1,7 @@
-function I_rec = Decompress(I_comp)
-    data = I_comp.km.means(I_comp.km.data, :);
+function I_rec = Decompress(I_comp, smooth)
+	if (nargin < 2) smooth = true; end % smooth by default
+	butts = unpixpack(I_comp.km.data, size(I_comp.km.means, 1)) + 1;
+    data = I_comp.km.means(butts, :);
     d = I_comp.pca.patch;
     Xzm = I_comp.pca.eigen * data';
     X = Xzm' + repmat(I_comp.pca.mean, size(Xzm, 2), 1);
@@ -14,18 +16,18 @@ function I_rec = Decompress(I_comp)
     	end
     end
     
-    sz = size(I_rec);
+    if smooth
+		% smooth patch edges
+		cbounds = cat(4, I_rec(d-1:d:end-2, :, :), I_rec(d:d:end-1, :, :), I_rec(d+1:d:end-1, :, :), I_rec(d+2:d:end-1, :, :));
+		cbmu = mean(cbounds, 4);
+		I_rec(d:d:end-1, :, :) = cbmu;
+		I_rec(d+1:d:end-1, :, :) = cbmu;
+		cbounds = cat(4, I_rec(:, d-1:d:end-2, :), I_rec(:, d:d:end-1, :), I_rec(:, d+1:d:end, :), I_rec(:, d+2:d:end, :));
+		cbmu = mean(cbounds, 4);
+		I_rec(:, d+1:d:end-1, :) = cbmu;
+		I_rec(:, d:d:end-1, :) = cbmu;
+	end
     
-    % smooth patch edges
-    cbounds = cat(4, I_rec(d-1:d:end-2, :, :), I_rec(d:d:end-1, :, :), I_rec(d+1:d:end-1, :, :), I_rec(d+2:d:end-1, :, :));
-    cbmu = mean(cbounds, 4);
-    I_rec(d:d:end-1, :, :) = cbmu;
-    I_rec(d+1:d:end-1, :, :) = cbmu;
-    cbounds = cat(4, I_rec(:, d-1:d:end-2, :), I_rec(:, d:d:end-1, :), I_rec(:, d+1:d:end, :), I_rec(:, d+2:d:end, :));
-    cbmu = mean(cbounds, 4);
-    I_rec(:, d+1:d:end-1, :) = cbmu;
-    I_rec(:, d:d:end-1, :) = cbmu;
-    
-    % pad to original size
-    padding = I_comp.size - sz(1:2);
-    I_rec = padarray(I_rec, padding, 'replicate', 'post');
+    sz = I_comp.size;
+    % crop to original size
+	I_rec = I_rec(1:sz(1),1:sz(2),:);

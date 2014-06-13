@@ -2,6 +2,7 @@
 %
 % NOTE Images must be have .jpg ending and reside in the same folder.
 
+%IMAGE_DIR = '../test_images/';
 %IMAGE_DIR = '../swissmountains/';
 IMAGE_DIR = './';
 
