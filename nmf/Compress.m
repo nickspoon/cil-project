@@ -3,7 +3,7 @@ function I_comp = Compress(I)
     k = 1; % dimensions to retain
 %     c = 16; % number of k-means clusters
     
-	[U, Z] = NoNMF(I, d, k);
+	[U, Z] = nnmf(I, k);
 % 	[mu, lambda, U] = PCAanalyse(X);
 	
 %     Xzm = X - repmat(mu, size(X, 1), 1);
