@@ -19,13 +19,12 @@ if not(isequal(mod(y,d2),0));
    end
 end
 sz=size(i2_red);
-x3=[];
-x3=cat(2,x3,i2_red,i2_green,i2_blue);
+x3=cat(2,i2_red,i2_green,i2_blue);
 [x11,y1]=size(x3);
 xR=[];
 for i=1:d2:x11
     for j=1:d2:y1
-        x4=x3(i:i-1+d2,j:j-1+d2);
+        x4=x3(i:i-1+d2,j:j-1+d2)';
         x4=x4(:);
         xR=cat(2,xR,x4);
   
