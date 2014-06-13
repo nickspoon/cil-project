@@ -3,7 +3,7 @@ function [x1,sz]=color(i2,d2)
 i2_red=i2(:,:,1);
 i2_green=i2(:,:,2);
 i2_blue=i2(:,:,3);
-
+% imshow(uint8(i2_red));
 if not(isequal(mod(x,d2),0));
    for j=1:d2-mod(x,d2)
        i2_red=cat(1,i2_red,i2_red(1,:));
@@ -19,7 +19,8 @@ if not(isequal(mod(y,d2),0));
    end
 end
 sz=size(i2_red);
-x3=cat(2,i2_red,i2_green,i2_blue);
+x3=[];
+x3=cat(2,x3,i2_red,i2_green,i2_blue);
 [x11,y1]=size(x3);
 xR=[];
 for i=1:d2:x11

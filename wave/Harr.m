@@ -1,5 +1,5 @@
 function [HAH,H]=Harr(I)
-    epsi=0.25;
+    epsi=0.1;
     [M,N]=size(I);
     H=coso(N);
 
@@ -8,7 +8,7 @@ function [HAH,H]=Harr(I)
 
 end
 function B=lossVal(A,e)
-    A(A<=e)=0;
+    A(abs(A)<=e)=0;
     B=A;
 end
 function ide=coso(N)

@@ -10,15 +10,16 @@ if not(isequal(mod(y,d2),0))
        i2=cat(2,i2,i2(:,1));
    end
 end
+sz=size(i2);
 [x11,y1]=size(i2);
 xR=[];
 for i=1:d2:x11
     for j=1:d2:y1
-        x4=i2(i:i+d2-1,j:j+d2-1);
+        x4=i2(i:i-1+d2,j:j-1+d2);
         x4=x4(:);
-        xR=cat(2,xR,x4);     
-    end   
+        xR=cat(2,xR,x4);
+  
+    end
 end
-sz=size(xR);
 x1=xR;
 end

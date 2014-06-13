@@ -48,15 +48,17 @@ if size(sz,2)>=3
     i2_red=i2_red(1:sz(1),1:sz(2));
     i2_green=i2_green(1:sz(1),1:sz(2));
     i2_blue=i2_blue(1:sz(1),1:sz(2));
-    
+%     I_rec=zeros(sz(1),sz(2),3);
     I_rec(:,:,1)=i2_red;
     I_rec(:,:,2)=i2_green;
     I_rec(:,:,3)=i2_blue;
 elseif isequal(size(sz,2),2)
+% sz
+% d
     t1=sz(1)/d;
     t2=sz(2)/d;
-%     sz
-    X=otro(X,t1,t2,d);
+    
+    X=otro(X,ceil(t1),ceil(t2),d);
 %     size(X)
     X=X(1:sz(1),1:sz(2));
     I_rec=X;
@@ -73,7 +75,7 @@ function KK=otro(X,m,n,d)
     for i=1:m
         K=[];
         for j=1:n
-            K=cat(2,K,reshape(X(:,col),d,d));
+            K=cat(2,K,reshape(X(:,col),d,d)');
             col=col+1;
         end
         KK=cat(1,KK,K);

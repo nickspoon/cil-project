@@ -1,5 +1,5 @@
 function I_comp = Compress(I)
-    d = 4; % patch size
+    d = 2; % patch size
 %     I=double(I);
 %     figure, imshow(uint8(I))
     datl=size(I);
