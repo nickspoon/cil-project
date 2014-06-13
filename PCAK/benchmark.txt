@@ -1,0 +1,32 @@
+4x4 patches, k = 4, c = 16, unsmoothed
+test_images:
+	Average quadratic error: 0.0054167 (variance 9.5237e-06)
+	Average compression rate: 0.0022358 (variance 1.1794e-34)
+swissmountains:
+	Average quadratic error: 0.0029394 (variance 1.1757e-06)
+	Average compression rate: 0.0016768 (variance 1.985e-11)
+samples:
+	Average quadratic error: 0.004911 (variance 1.9692e-06)
+	Average compression rate: 0.0036798 (variance 7.1513e-06)
+
+4x4 patches, k = 4, c = 4..32 (mse_target = 0.05), unsmoothed
+test_images:
+	Average quadratic error: 0.0047893 (variance 6.23e-06)
+	Average compression rate: 0.0024517 (variance 1.04e-07)
+swissmountains:
+	Average quadratic error: 0.0026866 (variance 6.4257e-07)
+	Average compression rate: 0.0017741 (variance 7.445e-08)
+samples:
+	Average quadratic error: 0.0044104 (variance 2.6972e-06)
+	Average compression rate: 0.0035713 (variance 3.2718e-06)
+
+4x4 patches, k = 4, c = 4..32 (mse_target = 0.05), smoothed
+test_images:
+	Average quadratic error: 0.0047083 (variance 7.5823e-06)
+	Average compression rate: 0.0024413 (variance 1.0622e-07)
+swissmountains:
+	Average quadratic error: 0.0023735 (variance 6.6964e-07)
+	Average compression rate: 0.0018091 (variance 7.0966e-08)
+samples:
+	Average quadratic error: 0.0042851 (variance 3.44e-06)
+	Average compression rate: 0.0035713 (variance 3.2718e-06)

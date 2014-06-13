@@ -28,7 +28,26 @@ In section \ref{models}, we describe the operation of PCA and K-means in more de
 
 \section{Models and Methods}
 \label{models}
-Given some dataset $\mathbf{X}$ with covariance matrix $\mathbf{\Sigma_X}$, 
+\subsection{PCA}
+Given some dataset $\mathbf{X} = [\mathbf{x_1}, \ldots, \mathbf{x_n}]$ with mean $\mathbf{\mu_X}$ and covariance matrix $\mathbf{\Sigma_X}$, we transform it into a matrix $\mathbf{Y}$ given by
+\begin{equation*}
+	\mathbf{Y} = \mathbf{A} (\mathbf{X} - \mathbf{\mu_X}) ~ ,
+\end{equation*}
+where $\mathbf{A}$ is the matrix of (normalised) eigenvectors of $\mathbf{\Sigma_X}$, i.e. $\mathbf{A}^T \mathbf{\Lambda} \mathbf{A} = \mathbf{\Sigma_X}$ where $\mathbf{\Lambda}$ is a diagonal matrix of the eigenvalues of $\mathbf{\Sigma_X}$. Since $\mathbf{A}$ is orthonormal, the transform can be easily inverted:
+\begin{equation*}
+	\mathbf{X} = \mathbf{A}^T \mathbf{Y} + \mathbf{\mu_X} ~ .
+\end{equation*}
+
+The advantage of PCA is that since most of the variation of the data is captured in the first few components, we can retain only the first $k$ and obtain an approximation to $X$ with much lower dimension. In particular, let $\mathbf{Y}_k$ and $\mathbf{A}_k$ be the matrices $\mathbf{Y}$ and $\mathbf{A}$ truncated to the first $k$ dimensions. Then an approximation $\mathbf{\tilde X}$ to $\mathbf{X}$ is obtained as
+\begin{equation*}
+	\mathbf{\tilde X} = \mathbf{A}_k^T \mathbf{Y}_k + \mathbf{\mu_X} ~ .
+\end{equation*}
+
+Clearly PCA already offers some compression, since the matrices $\mathbf{Y}_k$ and $\mathbf{A}_k$ can be much smaller than $X$.
+
+The application of PCA to an image requires some thought as to the features which will comprise the dataset. In this paper we divide the image into non-overlapping square patches and vectorise each patch. This gives a dimensionality of $d \times d \times c$, where $d$ is the dimension of the patch and $c$ is the number of colour dimensions. Other feature extractions are possible; for example, one can apply PCA to a Haar wavelet decomposition of an image \cite{tong2010wavelet}.
+
+\subsection{K-means}
 
 \section{Results}
 \label{results}
@@ -36,5 +55,7 @@ Given some dataset $\mathbf{X}$ with covariance matrix $\mathbf{\Sigma_X}$,
 \section{Discussion}
 \label{discussion}
 
+\bibliographystyle{plain}
+\bibliography{references}
 
 \end{document}
