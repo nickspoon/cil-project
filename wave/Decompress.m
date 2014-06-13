@@ -61,13 +61,28 @@ elseif isequal(size(sz,2),2)
     t1=sz(1)/d;
     t2=sz(2)/d;
     
-    X=otro(X,ceil(t1),ceil(t2),d);
+    X=otro2(X,ceil(t1),ceil(t2),d);
 %     size(X)
     X=X(1:sz(1),1:sz(2));
     I_rec=X;
 end
 %     size(I_rec)
 % imshow(I_rec);
+end
+function KK=otro2(X,m,n,d)
+    col=1;
+    KK=[];
+    for i=1:m
+        K=[];
+        for j=1:n
+            K=cat(2,K,reshape(X(:,col),d,d)');
+            col=col+1;
+        end
+        KK=cat(1,KK,K);
+    end
+%     col
+%     KK 
+    
 end
 function KK=otro(X,m,n,d)
     col=1;
