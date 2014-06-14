@@ -1,9 +1,10 @@
 function [HAH,H]=Harr(I)
-    epsi=0.1; %compresion ratio
+    epsi=0.001; %compresion ratio
     [M,N]=size(I);
     H=coso(N);%creates the Haar transformation matrix
     HAH=H'*I*H;%transfor  the data
     HAH=lossVal(HAH,epsi);% find the values of the transform matrix and set elements to 0 accordin to the compresion ratio
+    
 
 end
 function B=lossVal(A,e)
