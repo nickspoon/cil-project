@@ -1,15 +1,15 @@
-function [U,Z]=NoNMF(I)
+function [U,Z]=NoNMF(I,d,k)
 
     %
-    d=20;
+%     d=20;
     figure, colormap(gray),imagesc(I);
 %     [I,blocks]=extract(I,d);
-    k=10;
+%     k=10;
     I=double(I);
     [D,N]=size(I);
     U=randi(256,D,k);
     Z=randi(256,k,N);
-    for h=1:5000
+    for h=1:1000
         Xz_uuz=(I*Z')./((U*Z)*Z');
         Ux_uuz=(U'*I)./(U'*U*Z);
         for i=1:D
@@ -31,7 +31,7 @@ function [U,Z]=NoNMF(I)
 %     Cr = reshape(Cr, [blocks(1),blocks(2)]);
 %     fin = cell2mat(Cr);
     %colormap(gray);
-    figure, colormap(gray),imagesc(fin);
+%     figure, colormap(gray),imagesc(fin);
 
 end
 function [X, blocks] = extract(I, d)
