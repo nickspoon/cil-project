@@ -1,7 +1,7 @@
 4x4 patches, k = 4, c = 16, unsmoothed
-test_images:
-	Average quadratic error: 0.0054167 (variance 9.5237e-06)
-	Average compression rate: 0.0022358 (variance 1.1794e-34)
+photos:
+	Average quadratic error: 0.0055064 (variance 9.1122e-06)
+	Average compression rate: 0.0022358 (variance 6.8011e-36)
 swissmountains:
 	Average quadratic error: 0.0029394 (variance 1.1757e-06)
 	Average compression rate: 0.0016768 (variance 1.985e-11)
@@ -9,10 +9,10 @@ samples:
 	Average quadratic error: 0.004911 (variance 1.9692e-06)
 	Average compression rate: 0.0036798 (variance 7.1513e-06)
 
-4x4 patches, k = 4, c = 4..32 (mse_target = 0.05), unsmoothed
+4x4 patches, k = 4, c = 4..32 (mse_target = 0.002), unsmoothed
 test_images:
-	Average quadratic error: 0.0047893 (variance 6.23e-06)
-	Average compression rate: 0.0024517 (variance 1.04e-07)
+	Average quadratic error: 0.0041146 (variance 5.5764e-06)
+	Average compression rate: 0.0030117 (variance 9.7718e-08)
 swissmountains:
 	Average quadratic error: 0.0026866 (variance 6.4257e-07)
 	Average compression rate: 0.0017741 (variance 7.445e-08)
@@ -20,13 +20,39 @@ samples:
 	Average quadratic error: 0.0044104 (variance 2.6972e-06)
 	Average compression rate: 0.0035713 (variance 3.2718e-06)
 
-4x4 patches, k = 4, c = 4..32 (mse_target = 0.05), smoothed
+4x4 patches, k = 4, c = 4..32 (mse_target = 0.002), smoothed
 test_images:
-	Average quadratic error: 0.0047083 (variance 7.5823e-06)
-	Average compression rate: 0.0024413 (variance 1.0622e-07)
+	Average quadratic error: 0.0042495 (variance 7.1248e-06)
+	Average compression rate: 0.0030194 (variance 9.2361e-08)
 swissmountains:
 	Average quadratic error: 0.0023735 (variance 6.6964e-07)
 	Average compression rate: 0.0018091 (variance 7.0966e-08)
 samples:
 	Average quadratic error: 0.0042851 (variance 3.44e-06)
 	Average compression rate: 0.0035713 (variance 3.2718e-06)
+
+===================
+
+5x5 patches, k = 4, c = 32, unsmoothed
+photos:
+	Average quadratic error: 0.0055298 (variance 1.0065e-05)
+	Average compression rate: 0.0021926 (variance 1.0882e-34)
+clipart:
+	Average quadratic error: 0.014004 (variance 2.4564e-05)
+	Average compression rate: 0.0075413 (variance 1.1375e-05)
+
+5x5 patches, k = 4, c = 32, smoothed
+photos:
+	Average quadratic error: 0.0052152 (variance 1.016e-05)
+	Average compression rate: 0.0021926 (variance 1.0882e-34)
+clipart:
+	Average quadratic error: 0.013049 (variance 2.0889e-05)
+	Average compression rate: 0.0075413 (variance 1.1375e-05)
+
+3x3 patches, k = 4, c = 32, unsmoothed
+photos:
+	Average quadratic error: 0.0035871 (variance 4.0647e-06)
+	Average compression rate: 0.0037753 (variance 1.7003e-34)
+clipart:
+	Average quadratic error: 0.0072266 (variance 6.4755e-06)
+	Average compression rate: 0.007918 (variance 6.8041e-06)

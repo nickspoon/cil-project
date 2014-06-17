@@ -1,4 +1,6 @@
 function X = unpixpack(in, c)
+	if c == 128; c = 256; end % ugly solution to overflow problem
+
 	Z = in.data;
 	bsize = lcm(8, log2(c));
 	bytes = bsize/8;
