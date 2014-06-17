@@ -1,0 +1,10 @@
+\section{Introduction}
+Image compression, and indeed data compression in general, is an important application of computational data analysis. The increasing popularity of mobile devices, with their limited bandwidth and rich multimedia capabilities, creates a demand for techniques which provide both an excellent compression ratio and minimal reduction in quality. This has given rise to highly sophisticated prediction and quantisation algorithms, of which PCA and K-means are (respectively) examples. Furthermore, image analysis techniques typically operate on compressed image data, since raw image data usually has high dimension but low information density.
+
+Principal component analysis (PCA) is a widely-used tool in large-scale data analysis. Its central idea is to reduce the dimensionality of a data set while at the same time retaining as much of its variance as possible. This is achieved by extracting from the data its `principal components': a basis in which the data is uncorrelated, where only a relatively small number of components capture the variance of the entire data set.
+
+K-means is a method of vector quantisation and clustering, wherein a data set is divided into $K$ clusters by a method of iterative refinement. It is often employed in classification, and can also be used to perform simple image compression by colour reduction.
+
+\todo[inline]{Briefly explain hybrid approach.}
+
+In section \ref{models}, we describe the operation of PCA and K-means in more detail, and explain the hybrid method. We describe how the model parameters are selected, and how the performance of the model was evaluated. In section \ref{results}, we determine the effectiveness of the algorithm on representative image sets and compare these results to a trivial baseline, as well as to the standard PCA and K-means algorithms. In section \ref{discussion} we discuss the significance of the results and propose further improvements.

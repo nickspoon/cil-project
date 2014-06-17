@@ -4,7 +4,7 @@ function I_rec = Decompress(I_comp)
     d = double(I_comp.d);        
     sz = double(I_comp.size);
     sz2=double(I_comp.size2);
-    X=I_comp.X;
+    X=full(I_comp.data);
     % blocks = floor(sz/d);
     % size(sz)
     if size(sz,2)>=3

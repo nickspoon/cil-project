@@ -1,8 +1,8 @@
-function [U,Z]=NoNMF(I,d,k)
+function [U,Z]=NoNMF(I,k)
 
     %
 %     d=20;
-    figure, colormap(gray),imagesc(I);
+    figure, imshow(uint8(I));
 %     [I,blocks]=extract(I,d);
 %     k=10;
     I=double(I);
@@ -23,15 +23,8 @@ function [U,Z]=NoNMF(I,d,k)
             end
         end
     end
-    fin=U*Z;
-%     br_vec = ones(1, size(fin, 1));
-%     bc_vec = size(fin, 2);
-%     C = mat2cell(fin, br_vec, bc_vec);
-%     Cr = cellfun(@(c) reshape(c, d, d, size(I,3)), C, 'UniformOutput', false);
-%     Cr = reshape(Cr, [blocks(1),blocks(2)]);
-%     fin = cell2mat(Cr);
-    %colormap(gray);
-%     figure, colormap(gray),imagesc(fin);
+%     fin=U*Z;
+
 
 end
 function [X, blocks] = extract(I, d)
