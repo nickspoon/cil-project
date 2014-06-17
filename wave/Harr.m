@@ -1,16 +1,14 @@
 function [HAH,H]=Harr(I)
-    epsi=0.1;
+    epsi=0.25; %compresion ratio
     [M,N]=size(I);
+    H=coso(N);%creates the Haar transformation matrix
+    HAH=H'*I*H;%transfor  the data
+    HAH=lossVal(HAH,epsi);% find the values of the transform matrix and set elements to 0 accordin to the compresion ratio
     
-    H=coso(N);
-
-    HAH=H'*I*H;
-    HAH=lossVal(HAH,epsi);
 
 end
 function B=lossVal(A,e)
     A(abs(A)<=e)=0;
-%     A(A<=e)=0;
     B=A;
 end
 function ide=coso(N)
@@ -37,19 +35,3 @@ function ide=coso(N)
         N2=N2/2;
     end
 end
-% function T=Transfo(I,M,N)
-%     for i=1:M
-%        N2=N;
-% %         while N2>1
-%             Ro=[];
-%             Ro2=[];
-%             for j=1:2:N2
-%                 Ro=[Ro;(I(i,j)+I(i,j+1))/2];
-%                 Ro2=[Ro2;(I(i,j)-I(i,j+1))/2];
-%             end
-%             I(i,1:N2)=cat(2,Ro',Ro2');
-% %             N2=N2/2;
-% %         end
-%     end
-%     T=I;
-% end
