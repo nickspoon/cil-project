@@ -1,5 +1,5 @@
 function [HAH,H]=Harr(I)
-    epsi=0.25; %compresion ratio
+    epsi=0.01; %compresion ratio
     [M,N]=size(I);
     H=coso(N);%creates the Haar transformation matrix
     HAH=H'*I*H;%transfor  the data
