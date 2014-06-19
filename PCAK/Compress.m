@@ -15,7 +15,7 @@ function I_comp = Compress(I, k)
     mse = 1; oldmse = 2; c = cmin/2;
     while (mse > mse_target)
     	c = c * 2;
-    	mse = oldmse
+    	mse = oldmse;
 		[mus, Z, mse] = Kmeans(Zzm(1:k,:)', c);
 		if c >= cmax break; end % max. clusters
 	end
