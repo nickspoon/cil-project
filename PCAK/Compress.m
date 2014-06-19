@@ -1,8 +1,8 @@
 function I_comp = Compress(I, k)
     d = 5; % patch size
-    if (nargin < 2) k = 6; end % dimensions to retain
+    if (nargin < 2) k = 4; end % dimensions to retain
     cmin = 4; % minimum number of k-means clusters
-    cmax = 64; % maximum number of k-means clusters
+    cmax = 32; % maximum number of k-means clusters
     mse_target = 0.2; % target mean squared error in PCA reconstruction
     
 	[X, blocks] = extract(I, d);
