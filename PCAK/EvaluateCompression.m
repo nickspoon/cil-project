@@ -2,17 +2,17 @@
 %
 % NOTE Images must be have .jpg ending and reside in the same folder.
 
-<<<<<<< HEAD
+%<<<<<<< HEAD
 %IMAGE_DIR = '../test_images/';
 IMAGE_DIR = '../swissmountains/';
-=======
+%=======
 
 %IMAGE_DIR = '../photos/training/';
 %IMAGE_DIR = '../photos/evaluation/';
 %IMAGE_DIR = '../clipart/training/';
-IMAGE_DIR = '../clipart/evaluation/';
+%IMAGE_DIR = '../clipart/evaluation/';
 %IMAGE_DIR = '../swissmountains/';
->>>>>>> FETCH_HEAD
+%>>>>>>> FETCH_HEAD
 %IMAGE_DIR = './';
 
 file_list = dir(IMAGE_DIR); 
