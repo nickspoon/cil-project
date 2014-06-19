@@ -1,0 +1,61 @@
+\documentclass[10pt,conference,compsocconf]{IEEEtran}
+
+\usepackage[utf8]{inputenc}
+\usepackage[UKenglish]{babel}
+\usepackage{url}
+\usepackage{graphicx}
+\usepackage{amsmath}
+
+\title{Hybrid PCA and K-means for fast image compression}
+\author{Simone Forte \qquad Pedro Mendez Montejano \qquad Nicholas Spooner \\
+		ETH Z\"urich}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Write me.
+\end{abstract}
+
+\section{Introduction}
+Image compression, and indeed data compression in general, is an important application of computational data analysis. The increasing popularity of mobile devices, with their limited bandwidth and rich multimedia capabilities, creates a demand for techniques which provide both an excellent compression ratio and minimal reduction in quality. This has given rise to highly sophisticated prediction and quantisation algorithms, of which PCA and K-means are (respectively) examples. Furthermore, image analysis techniques typically operate on compressed image data, since raw image data usually has high dimension but low information density.
+
+Principal component analysis (PCA) is a widely-used tool in large-scale data analysis. Its central idea is to reduce the dimensionality of a data set while at the same time retaining as much of its variance as possible. This is achieved by extracting from the data its `principal components': a basis in which the data is uncorrelated, where only a relatively small number of components capture the variance of the entire data set.
+
+K-means is a method of vector quantisation and clustering, wherein a data set is divided into $K$ clusters by a method of iterative refinement.
+
+In section \ref{models}, we describe the operation of PCA and K-means in more detail, and explain the hybrid method. We describe how the model parameters are selected, and how the performance of the model was evaluated. In section \ref{results}, we determine the effectiveness of the algorithm on representative image sets and compare these results to a trivial baseline, as well as to the standard PCA and K-means algorithms. In section \ref{discussion} we discuss the significance of the results and propose further improvements.
+
+\section{Models and Methods}
+\label{models}
+\subsection{PCA}
+Given some dataset $\mathbf{X} = [\mathbf{x_1}, \ldots, \mathbf{x_n}]$ with mean $\mathbf{\mu_X}$ and covariance matrix $\mathbf{\Sigma_X}$, we transform it into a matrix $\mathbf{Y}$ given by
+\begin{equation*}
+	\mathbf{Y} = \mathbf{A} (\mathbf{X} - \mathbf{\mu_X}) ~ ,
+\end{equation*}
+where $\mathbf{A}$ is the matrix of (normalised) eigenvectors of $\mathbf{\Sigma_X}$, i.e. $\mathbf{A}^T \mathbf{\Lambda} \mathbf{A} = \mathbf{\Sigma_X}$ where $\mathbf{\Lambda}$ is a diagonal matrix of the eigenvalues of $\mathbf{\Sigma_X}$. Since $\mathbf{A}$ is orthonormal, the transform can be easily inverted:
+\begin{equation*}
+	\mathbf{X} = \mathbf{A}^T \mathbf{Y} + \mathbf{\mu_X} ~ .
+\end{equation*}
+
+The advantage of PCA is that since most of the variation of the data is captured in the first few components, we can retain only the first $k$ and obtain an approximation to $X$ with much lower dimension. In particular, let $\mathbf{Y}_k$ and $\mathbf{A}_k$ be the matrices $\mathbf{Y}$ and $\mathbf{A}$ truncated to the first $k$ dimensions. Then an approximation $\mathbf{\tilde X}$ to $\mathbf{X}$ is obtained as
+\begin{equation*}
+	\mathbf{\tilde X} = \mathbf{A}_k^T \mathbf{Y}_k + \mathbf{\mu_X} ~ .
+\end{equation*}
+
+Clearly PCA already offers some compression, since the matrices $\mathbf{Y}_k$ and $\mathbf{A}_k$ can be much smaller than $X$.
+
+The application of PCA to an image requires some thought as to the features which will comprise the dataset. In this paper we divide the image into non-overlapping square patches and vectorise each patch. This gives a dimensionality of $d \times d \times c$, where $d$ is the dimension of the patch and $c$ is the number of colour dimensions. Other feature extractions are possible; for example, one can apply PCA to a Haar wavelet decomposition of an image \cite{tong2010wavelet}.
+
+\subsection{K-means}
+
+\section{Results}
+\label{results}
+
+\section{Discussion}
+\label{discussion}
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

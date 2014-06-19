@@ -3,7 +3,9 @@
 % NOTE Images must be have .jpg ending and reside in the same folder.
 
 %IMAGE_DIR = '../test_images/';
-IMAGE_DIR = '../swissmountains/';
+%IMAGE_DIR = '../swissmountains/';
+%IMAGE_DIR = '../photos/evaluation/';
+IMAGE_DIR = '../clipart/evaluation/';
 %IMAGE_DIR = './';
 
 file_list = dir(IMAGE_DIR); 
@@ -16,7 +18,7 @@ for i = 3:length(file_list) % runing through the folder
     
     file_name = file_list(i).name; % get current filename
     
-    if(max(file_name(end-3:end) ~= '.jpg')) % check that it is an image
+    if(max(file_name(end-3:end) ~= '.jpg') && max(file_name(end-3:end) ~= '.png')) % check that it is an image
         continue;
     end
     

@@ -1,6 +1,5 @@
 function I_comp = Compress(I)
-<<<<<<< HEAD
-    d = 8; % patch size
+    d = 5; % patch size
     k = 4; % dimensions to retain
     datl=size(I);
 %     I2=I;
@@ -18,21 +17,5 @@ function I_comp = Compress(I)
 %         [I2,sz]=nocolor(I2,d);
         [U, Z] = nnmf(I, k);
     end
-=======
-    d = 20; % patch size
-    k = 1; % dimensions to retain
-%     c = 16; % number of k-means clusters
->>>>>>> parent of 0ffba22... Merge branch 'master' of github.com:nickspoon/cil-project
-    
-	[U, Z] = nnmf(I, k);
-% 	[mu, lambda, U] = PCAanalyse(X);
-	
-%     Xzm = X - repmat(mu, size(X, 1), 1);
-%     Zzm = U' * Xzm';
-%     [mus, Z, msd] = Kmeans(Zzm(1:k,:)', c);
-%     
-%     sz = size(I);
-%     colours = size(I, 3);
-%     PCAdata = struct('mean', mu, 'eigen', U(:, 1:k), 'blocks', blocks, 'patch', d);
-%     Kmdata = struct('means', mus, 'data', uint8(Z));
-    I_comp = struct('U', U, 'Z', Z, 'd', d, 'k', k);
+
+    I_comp = struct('U', U, 'Z', Z, 'd', d, 'k', k,'size',datl);

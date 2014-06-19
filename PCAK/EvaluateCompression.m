@@ -4,13 +4,13 @@
 
 %<<<<<<< HEAD
 %IMAGE_DIR = '../test_images/';
-IMAGE_DIR = '../swissmountains/';
+%IMAGE_DIR = '../swissmountains/';
 %=======
 
 %IMAGE_DIR = '../photos/training/';
 %IMAGE_DIR = '../photos/evaluation/';
 %IMAGE_DIR = '../clipart/training/';
-%IMAGE_DIR = '../clipart/evaluation/';
+IMAGE_DIR = '../clipart/evaluation/';
 %IMAGE_DIR = '../swissmountains/';
 %>>>>>>> FETCH_HEAD
 %IMAGE_DIR = './';
@@ -35,7 +35,7 @@ for i = 3:length(file_list) % runing through the folder
     
     size_orig = whos('I'); % size of original image
     
-    I_comp = Compress(I, pcadim, psize, 32); % compress image
+    I_comp = Compress(I, 4, 5, 32); % compress image
     I_rec = Decompress(I_comp, true); % decompress it
     
     % Measure approximation error

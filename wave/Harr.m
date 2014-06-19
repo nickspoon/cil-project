@@ -1,9 +1,7 @@
 function [HAH,H]=Harr(I)
-<<<<<<< HEAD
+
     epsi=0.01; %compresion ratio
-=======
-    epsi=0.1;
->>>>>>> parent of 0ffba22... Merge branch 'master' of github.com:nickspoon/cil-project
+
     [M,N]=size(I);
     
     H=coso(N);

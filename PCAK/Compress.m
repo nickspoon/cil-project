@@ -1,11 +1,4 @@
-<<<<<<< HEAD
-function I_comp = Compress(I, k)
-    d = 5; % patch size
-    if (nargin < 2) k = 4; end % dimensions to retain
-    cmin = 4; % minimum number of k-means clusters
-    cmax = 32; % maximum number of k-means clusters
-    mse_target = 0.2; % target mean squared error in PCA reconstruction
-=======
+
 function I_comp = Compress(I, k, d, c)
     if (nargin < 2)
     	k = 4; % dimensions to retain
@@ -20,7 +13,7 @@ function I_comp = Compress(I, k, d, c)
     	cmin = c; cmax = c; % fix cluster number
 	end
     mse_target = 0.002; % target mean squared error in k-means reconstruction
->>>>>>> FETCH_HEAD
+
     
 	[X, blocks] = extract(I, d);
 	[mu, lambda, U] = PCAanalyse(X);
@@ -31,12 +24,9 @@ function I_comp = Compress(I, k, d, c)
     
     mse = 1; c = cmin/4;
     while (mse > mse_target)
-<<<<<<< HEAD
-    	c = c * 2;
-    	mse = oldmse;
-=======
+
     	c = c * 4;
->>>>>>> FETCH_HEAD
+
 		[mus, Z, mse] = Kmeans(Zzm(1:k,:)', c);
 		if c >= cmax break; end % max. clusters
 		
