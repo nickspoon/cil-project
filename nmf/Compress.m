@@ -1,7 +1,7 @@
 function I_comp = Compress(I)
 <<<<<<< HEAD
     d = 8; % patch size
-    k = 4; % dimensions to retain
+    k = 6; % dimensions to retain
     datl=size(I);
 %     I2=I;
     if isequal(size(datl,2),3)

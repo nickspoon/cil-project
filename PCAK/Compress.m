@@ -33,10 +33,14 @@ function I_comp = Compress(I, k, d, c)
     while (mse > mse_target)
 <<<<<<< HEAD
     	c = c * 2;
+<<<<<<< HEAD
     	mse = oldmse;
 =======
     	c = c * 4;
 >>>>>>> FETCH_HEAD
+=======
+    	mse = oldmse
+>>>>>>> parent of 4f7dd31... not important
 		[mus, Z, mse] = Kmeans(Zzm(1:k,:)', c);
 		if c >= cmax break; end % max. clusters
 		
