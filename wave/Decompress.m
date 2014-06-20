@@ -16,10 +16,13 @@ function I_rec = Decompress(I_comp)
             perro=vec2mat(i2_red(:,i)',d);
             perro2=vec2mat(i2_green(:,i)',d);
             perro3=vec2mat(i2_blue(:,i)',d);
-
-            HAH=(H'\perro/H)*256;
-            HAH2=(H'\perro2/H)*256;
-            HAH3=(H'\perro3/H)*256;
+                
+                HAH=H'*perro*H;
+                HAH2=H'*perro2*H;
+                HAH3=H'*perro3*H;
+%             HAH=(H'\perro/H)*256;
+%             HAH2=(H'\perro2/H)*256;
+%             HAH3=(H'\perro3/H)*256;
 
             
             
@@ -50,8 +53,10 @@ function I_rec = Decompress(I_comp)
         
         for i=1:size(X,2)
             perro=vec2mat(X(:,i)',d);
+            
+                HAH=H*perro*H';
 
-            HAH=(H'\perro/H)*256;
+%             HAH=(H'\perro/H)*256;
             X(:,i)=reshape(HAH,1,d*d);
         end
         X=otro2(X,ceil(t1),ceil(t2),d);

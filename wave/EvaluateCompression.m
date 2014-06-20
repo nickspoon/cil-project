@@ -5,8 +5,8 @@
 %IMAGE_DIR = '../test_images/';
 %IMAGE_DIR = '../swissmountains/';
 %IMAGE_DIR = '../photos/evaluation/';
-IMAGE_DIR = '../clipart/evaluation/';
-%IMAGE_DIR = './';
+%IMAGE_DIR = '../clipart/evaluation/';
+IMAGE_DIR = './';
 
 file_list = dir(IMAGE_DIR); 
 k = 1;

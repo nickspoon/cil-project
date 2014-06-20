@@ -2,18 +2,11 @@
 %
 % NOTE Images must be have .jpg ending and reside in the same folder.
 
-%<<<<<<< HEAD
 %IMAGE_DIR = '../test_images/';
 %IMAGE_DIR = '../swissmountains/';
-%=======
-
-%IMAGE_DIR = '../photos/training/';
 %IMAGE_DIR = '../photos/evaluation/';
-%IMAGE_DIR = '../clipart/training/';
-%IMAGE_DIR = '../clipart/evaluation/';
-%IMAGE_DIR = '../swissmountains/';
-%>>>>>>> FETCH_HEAD
-IMAGE_DIR = './';
+IMAGE_DIR = '../clipart/evaluation/';
+%IMAGE_DIR = './';
 
 file_list = dir(IMAGE_DIR); 
 k = 1;
@@ -35,8 +28,8 @@ for i = 3:length(file_list) % runing through the folder
     
     size_orig = whos('I'); % size of original image
     
-    I_comp = Compress(I, 4, 5, 32); % compress image
-    I_rec = Decompress(I_comp, true); % decompress it
+    I_comp = Compress(I); % compress image
+    I_rec = Decompress(I_comp); % decompress it
     
     % Measure approximation error
     Errors(k) = mean(mean(mean( ((I - I_rec) ).^2)));
@@ -51,8 +44,6 @@ end
 
 Result(1) = mean(Errors);
 Result(2) = mean(Comp_rates);
-Result(3) = var(Errors);
-Result(4) = var(Comp_rates);
 
-disp(['Average quadratic error: ' num2str(Result(1)) ' (variance ' num2str(Result(3)) ')'])
-disp(['Average compression rate: ' num2str(Result(2)) ' (variance ' num2str(Result(4)) ')'])
+disp(['Average quadratic error: ' num2str(Result(1))])
+disp(['Average compression rate: ' num2str(Result(2))])
