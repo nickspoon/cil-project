@@ -9,9 +9,6 @@ if size(I,3)==3
 end
 [U,D,V]=svd(I);
 
-
-
-
 I_comp = struct('U',U(:,1:k),'D',D(1:k,1:k),'V',V(:,1:k),'k',k,'s',s); 
 end
 

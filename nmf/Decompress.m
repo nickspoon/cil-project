@@ -1,7 +1,8 @@
 function I_rec = Decompress(I_comp)
-    d=I_comp.d;
+    
+    
 
-    if isequal(size(I_comp.size,2),3)
+    if I_comp.cols == 3
 
         Ur=full(I_comp.U(:,:,1));
         Ug=full(I_comp.U(:,:,2));
@@ -17,7 +18,7 @@ function I_rec = Decompress(I_comp)
         
 
         I_rec=cat(3,Xr,Xg,Xb);
-    elseif isequal(size(I_comp.size,2),2)
+    else
         I_rec=full(I_comp.U)*full(I_comp.Z);
         
     end
